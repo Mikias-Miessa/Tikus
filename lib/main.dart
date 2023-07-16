@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'screens/Homepage.dart';
+import 'screens/networkImage.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,6 +14,7 @@ class MyApp extends StatelessWidget {
       title: 'My App',
       initialRoute: '/',
       routes: {
+        // '/': (context) => NetworkImageExample(),
         '/': (context) => HomePage(),
       },
     );
