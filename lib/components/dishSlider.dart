@@ -23,7 +23,7 @@ class _DishSliderState extends State<DishSlider> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 200,
+      height: 205,
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(
@@ -138,7 +138,7 @@ class _DishSliderState extends State<DishSlider> {
                                   '${dish['price'].toStringAsFixed(2)}',
                                   style: TextStyle(
                                     fontFamily: 'Poppins',
-                                    fontSize: 13,
+                                    fontSize: 11,
                                     color: Color.fromARGB(255, 13, 156, 85),
                                   ),
                                 ),

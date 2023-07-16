@@ -7,7 +7,7 @@ class DeliveryWidget extends StatelessWidget {
 
     return Container(
       width: screenWidth,
-      height: 90.0,
+      height: 100.0,
       padding: EdgeInsets.symmetric(horizontal: 26.0, vertical: 20),
       color: Color(0xFFFBFBFB),
       child: Row(

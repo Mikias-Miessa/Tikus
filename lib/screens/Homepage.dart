@@ -147,7 +147,7 @@ class _HomePageState extends State<HomePage> {
             left: 0,
             right: 0,
             child: Container(
-              height: 90,
+              height: 100,
               color: Colors.white,
               child: DeliveryWidget(),
             ),
