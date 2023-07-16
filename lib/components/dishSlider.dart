@@ -16,7 +16,6 @@ class _DishSliderState extends State<DishSlider> {
   @override
   void initState() {
     super.initState();
-    // Initialize the favorite state for each dish
     isFavoriteList = List<bool>.filled(widget.dishes.length, false);
     counterList = List<int>.filled(widget.dishes.length, 0);
   }
@@ -66,6 +65,7 @@ class _DishSliderState extends State<DishSlider> {
                             child: Text(
                               dish['name'],
                               style: TextStyle(
+                                fontFamily: 'Poppins',
                                 fontSize: 16,
                                 fontWeight: FontWeight.w500,
                                 color: Color.fromARGB(189, 87, 87, 87),
@@ -107,6 +107,7 @@ class _DishSliderState extends State<DishSlider> {
                               child: Text(
                                 '${dish['outlet']}',
                                 style: TextStyle(
+                                  fontFamily: 'Poppins',
                                   fontSize: 10,
                                   color: Color(0xFFFBB910),
                                 ),
@@ -136,7 +137,8 @@ class _DishSliderState extends State<DishSlider> {
                                 child: Text(
                                   '${dish['price'].toStringAsFixed(2)}',
                                   style: TextStyle(
-                                    fontSize: 15,
+                                    fontFamily: 'Poppins',
+                                    fontSize: 13,
                                     color: Color.fromARGB(255, 13, 156, 85),
                                   ),
                                 ),
@@ -147,7 +149,8 @@ class _DishSliderState extends State<DishSlider> {
                             child: Text(
                               ' ETB ',
                               style: TextStyle(
-                                fontSize: 13,
+                                fontFamily: 'Poppins',
+                                fontSize: 10,
                                 color: Color(0xFF939393),
                               ),
                             ),

@@ -15,8 +15,7 @@ class _BannerSliderState extends State<BannerSlider> {
   @override
   void initState() {
     super.initState();
-    int initialPage = widget.banners.length *
-        500; // Set initial page to a large value near the middle
+    int initialPage = widget.banners.length * 500;
     _pageController =
         PageController(initialPage: initialPage, viewportFraction: 0.8);
   }
@@ -34,11 +33,9 @@ class _BannerSliderState extends State<BannerSlider> {
       child: PageView.builder(
         controller: _pageController,
         scrollDirection: Axis.horizontal,
-        itemCount: widget.banners.length *
-            1000, // Set a large number for infinite loop
+        itemCount: widget.banners.length * 1000,
         itemBuilder: (BuildContext context, int index) {
-          final int imageIndex =
-              index % widget.banners.length; // Wrap around to the beginning
+          final int imageIndex = index % widget.banners.length;
 
           return AnimatedBuilder(
             animation: _pageController,
@@ -50,10 +47,8 @@ class _BannerSliderState extends State<BannerSlider> {
               }
               return Center(
                 child: SizedBox(
-                  height: Curves.easeOut.transform(value) *
-                      170.0, // Adjust the maximum height as needed
-                  width: Curves.easeOut.transform(value) *
-                      320.0, // Adjust the maximum width as needed
+                  height: Curves.easeOut.transform(value) * 170.0,
+                  width: Curves.easeOut.transform(value) * 320.0,
                   child: child,
                 ),
               );

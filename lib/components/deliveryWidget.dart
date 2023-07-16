@@ -7,7 +7,7 @@ class DeliveryWidget extends StatelessWidget {
 
     return Container(
       width: screenWidth,
-      height: 80.0,
+      height: 90.0,
       padding: EdgeInsets.symmetric(horizontal: 26.0, vertical: 20),
       color: Color(0xFFFBFBFB),
       child: Row(
@@ -20,8 +20,9 @@ class DeliveryWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Delivered to',
+                  'Deliver to',
                   style: TextStyle(
+                    fontFamily: 'Poppins',
                     fontWeight: FontWeight.w500,
                     fontSize: 18.0,
                     color: Color(0xFF575757),
@@ -33,7 +34,8 @@ class DeliveryWidget extends StatelessWidget {
                     Text(
                       '12th Street, Wosen Grocery',
                       style: TextStyle(
-                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w600,
                         fontSize: 20.0,
                         color: Color(0xFF575757),
                       ),
@@ -52,9 +54,17 @@ class DeliveryWidget extends StatelessWidget {
             height: 40.0,
             width: 40.0,
             decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.2),
+                  spreadRadius: 1.0,
+                  blurRadius: 1.0,
+                  offset: Offset(0, 1),
+                ),
+              ],
               shape: BoxShape.circle,
               color: Colors.white,
-              border: Border.all(color: Colors.grey),
+              border: Border.all(color: Color(0xFFD9D9D9)),
             ),
             child: Center(
               child: Icon(

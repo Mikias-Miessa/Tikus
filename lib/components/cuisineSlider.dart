@@ -37,7 +37,7 @@ class CuisineSlider extends StatelessWidget {
               imageUrl,
               placeholderBuilder: (BuildContext context) =>
                   CircularProgressIndicator(),
-              width: 52, // Adjust the size as needed
+              width: 52,
               height: 52,
             ),
           ),
@@ -45,6 +45,7 @@ class CuisineSlider extends StatelessWidget {
           Text(
             name,
             style: TextStyle(
+              fontFamily: 'Poppins',
               fontSize: 15.0,
               fontWeight: FontWeight.w500,
               color: Color(0xFF575757),
@@ -65,7 +66,7 @@ class CuisineSlider extends StatelessWidget {
             child: ClipOval(
               child: Image.network(
                 imageUrl,
-                width: 60, // Adjust the size as needed
+                width: 60,
                 height: 60,
                 loadingBuilder: (BuildContext context, Widget child,
                     ImageChunkEvent? loadingProgress) {
@@ -89,6 +90,7 @@ class CuisineSlider extends StatelessWidget {
           Text(
             name,
             style: TextStyle(
+              fontFamily: 'Poppins',
               fontSize: 15.0,
               fontWeight: FontWeight.w500,
               color: Color(0xFF575757),

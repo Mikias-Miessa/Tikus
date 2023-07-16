@@ -5,6 +5,8 @@ import 'package:tkus/components/deliveryWidget.dart';
 import 'package:tkus/components/bannerSlider.dart';
 import 'package:tkus/components/cuisineSlider.dart';
 import 'package:tkus/components/dishSlider.dart';
+import 'package:tkus/components/restaurantList.dart';
+import 'package:tkus/components/navigationWidget.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -15,7 +17,8 @@ class _HomePageState extends State<HomePage> {
   List<dynamic> banners = [];
   List<dynamic> cuisines = [];
   List<dynamic> dishes = [];
-  var isLoading = true; // Added variable to track loading state
+  List<dynamic> restaurants = [];
+  var isLoading = true;
 
   @override
   void initState() {
@@ -42,10 +45,10 @@ class _HomePageState extends State<HomePage> {
           banners = data['banners'];
           cuisines = data['cuisines'];
           dishes = data['dishes'];
+          restaurants = data['listRestaurants'];
           isLoading = false;
         });
       } else {
-        // Handle error
         setState(() {
           isLoading = false;
         });
@@ -54,7 +57,7 @@ class _HomePageState extends State<HomePage> {
     } catch (e) {
       print('Request failed with exception: $e');
       setState(() {
-        isLoading = false; // Set loading state to false in case of exception
+        isLoading = false;
       });
     }
   }
@@ -63,56 +66,94 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFFBFBFB),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(height: 30),
-            DeliveryWidget(),
-            isLoading
-                ? CircularProgressIndicator()
-                : banners != null
-                    ? Column(
-                        children: [
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 26.0, vertical: 22),
-                              child: Text(
-                                'Good Morning, Sol',
-                                style: TextStyle(
-                                  fontSize: 30,
-                                  color: Color(0xFF11C56B),
+      body: Stack(
+        children: [
+          SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(height: 30),
+                isLoading
+                    ? CircularProgressIndicator()
+                    : banners != null
+                        ? Column(
+                            children: [
+                              SizedBox(
+                                height: 70,
+                              ),
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 26.0, vertical: 22),
+                                  child: Text(
+                                    'Good Morning, Sol',
+                                    style: TextStyle(
+                                      fontSize: 30,
+                                      color: Color(0xFF11C56B),
+                                    ),
+                                  ),
                                 ),
                               ),
-                            ),
-                          ),
-                          BannerSlider(banners: banners),
-                          SizedBox(height: 30),
-                          CuisineSlider(cuisines: cuisines),
-                          Padding(
-                            padding: EdgeInsets.only(
-                                left: 16.0, top: 8.0, right: 16.0, bottom: 8.0),
-                            child: Align(
-                              alignment: Alignment.topLeft,
-                              child: Text(
-                                'Breakfast | lunch | Dinner',
-                                style: TextStyle(
-                                  fontSize: 24,
-                                  color: Color(0xFF575757),
+                              BannerSlider(banners: banners),
+                              SizedBox(height: 30),
+                              CuisineSlider(cuisines: cuisines),
+                              Padding(
+                                padding: EdgeInsets.only(
+                                    left: 16.0,
+                                    top: 8.0,
+                                    right: 16.0,
+                                    bottom: 8.0),
+                                child: Align(
+                                  alignment: Alignment.topLeft,
+                                  child: Text(
+                                    'Breakfast | Lunch | Dinner',
+                                    style: TextStyle(
+                                      fontSize: 24,
+                                      color: Color(0xFF575757),
+                                    ),
+                                  ),
                                 ),
                               ),
-                            ),
+                              DishSlider(dishes: dishes),
+                              Padding(
+                                padding: EdgeInsets.only(
+                                    left: 16.0,
+                                    top: 8.0,
+                                    right: 16.0,
+                                    bottom: 0.0),
+                                child: Align(
+                                  alignment: Alignment.topLeft,
+                                  child: Text(
+                                    'Near Me',
+                                    style: TextStyle(
+                                      fontSize: 24,
+                                      color: Color(0xFF575757),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              RestaurantListWidget(restaurants: restaurants)
+                            ],
+                          )
+                        : Text(
+                            'No data available',
+                            style: TextStyle(fontSize: 20),
                           ),
-                          DishSlider(dishes: dishes),
-                        ],
-                      )
-                    : Text(
-                        'No data available',
-                        style: TextStyle(fontSize: 20),
-                      ),
-          ],
-        ),
+              ],
+            ),
+          ),
+          Positioned(
+            top: 20,
+            left: 0,
+            right: 0,
+            child: Container(
+              height: 90,
+              color: Colors.white,
+              child: DeliveryWidget(),
+            ),
+          ),
+          NavigationWidget(),
+        ],
       ),
     );
   }
